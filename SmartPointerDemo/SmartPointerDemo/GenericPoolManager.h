@@ -15,7 +15,7 @@ public:
 			m_freeList.push_back(::new T);
 		}
 	}
-	
+
 	/* Allocate - returns first available block */
 	T* allocate()
 	{
@@ -30,12 +30,12 @@ public:
 		{
 			return 0;
 		}
-
 	}
 	
 	/* Release - returns borrowed resource block to the pool */
 	void release(T* resource)
 	{
+		resource = new (resource) T();
 		m_freeList.push_back(resource);
 	}
 

@@ -4,21 +4,24 @@
 template<class T> class SmartPointer
 {
 public:
+	// Constructors
 	SmartPointer(T* ptr = 0) : mPointer(ptr){
 	};
-
+	
 	SmartPointer(T& ptr)
 	{
 		mPointer = ptr.mPointer;
 		ptr.mPointer = 0;
 	};
 
+	// Destructor
 	~SmartPointer(void)
 	{
 		cout << "SmartPointer destructor called!" << "\n";
 		delete mPointer;
 	};
-
+	
+	// Override operator ->
 	T* operator->() const
 	{
 		if(mPointer!=0)
@@ -31,6 +34,7 @@ public:
 		}
 	};
 
+	// Override operator *
 	T& operator*() const
 	{
 		if(mPointer!=0)
@@ -43,6 +47,7 @@ public:
 		}
 	};
 
+	// Override operator =
 	SmartPointer& operator=(SmartPointer& ptr)
 	{
 		if(this == &ptr)

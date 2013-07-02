@@ -41,11 +41,13 @@ private:
 	int m_y;
 };
 
-/* Represents mouse click event */
+/* Represents event with binary large object (BLOB) */
 class BLOBEvent : public Event
 {
 public :
-	BLOBEvent():mBLOBPtr(new BLOBItem('s')){}
+	BLOBEvent():mBLOBPtr(new BLOBItem('s'))
+	{
+	}
 
 	void setBLOBPtr(SmartPointer<BLOBItem> BLOBPtr)
 	{ 
